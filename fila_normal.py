@@ -1,22 +1,11 @@
-class FilaNormal:
-    codigo: int = 0 
-    fila = []
-    clintesatendidos = []
-    senhaatual: str = 
+from fila_base import FilaBase
 
-    def gerasenhaatual(self)->None:
-        self.senhaatual = f'NM{self.codigo}'
-        
-     def resetafila(self)->None:
-        if self.codigo >= 100:
-            self.codigo = 0
-        else:
-            self.codigo += 1
-    def atualizafila(self)->None:
-        self.resetafila()
-        self.gerasenhaatual()
-        self.fila.append(self.senhaatual)
-     def chamacliente(self, caixa:int)->str:
-        clienteatual = self.fila.pop(0)
-        self.clintesatendidos.append(clienteatual)
-        return f'Cliente atual: {clienteatual}, dirija-se ao caixa {caixa}'
+
+class FilaNormal(FilaBase):
+    def gera_senha_atual(self) -> None:
+        self.senha_atual = f'NM{self.codigo}'
+
+     def chama_cliente(self, caixa: int) -> str:
+        cliente_atual = self.fila.pop(0)
+        self.clientes_atendidos.append(cliente_atual)
+        return f'Cliente atual: {cliente_atual}, dirija-se ao caixa {caixa}'
